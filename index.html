@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>yartsmin · original art, prints &amp; small things</title>
+  <meta name="description" content="Paintings, prints and small handmade things by yartsmin." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='13' cy='14' r='10' fill='%23a9b8e0'/><circle cx='20' cy='19' r='9' fill='%235c5a2c' fill-opacity='.85'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="topbar">
+    <nav class="nav" aria-label="Main">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <ul id="nav-links">
+        <li><a href="#" aria-current="page">Home</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#shipping">Shipping &amp; Returns</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="logo" href="#">yartsmin</a>
+    <div class="top-actions">
+    <a class="ig-link" href="https://www.instagram.com/yaakaichi/" target="_blank" rel="noopener" aria-label="Instagram @yaakaichi">
+      <svg class="ig-icon" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>
+    </a>
+    <button class="cart" aria-label="Cart, 0 items">
+      <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
+        <path d="M2 3h3l2.6 11.2a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L21 7H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="9" cy="19.5" r="1.6" fill="currentColor"/><circle cx="17" cy="19.5" r="1.6" fill="currentColor"/>
+      </svg>
+      <span class="cart-count">0</span>
+    </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO (move your mouse here: artworks trail the cursor) ============ -->
+    <section class="hero" id="hero">
+      <div class="hero-trail" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <h1 class="hero-title">
+          <span class="line"><span>Welcome </span></span>
+          <span class="line"><span>to my little world</span></span>
+        </h1>
+        <div class="hero-text type">
+          <p>If something here speaks to you, or sparks an idea, I’d love to hear about it.</p>
+          <p>Whether you’d like to collaborate, create something together, or simply know a little more about me and my work, don’t hesitate to reach out. Sometimes the nicest things start with a simple hello.</p>
+        </div>
+      </div>
+      <p class="hint type" aria-hidden="true">(move around, things appear)</p>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="wrap">
+      <form class="newsletter reveal" id="newsletter" novalidate>
+        <div class="newsletter-leopard" aria-hidden="true">
+          <video class="leopard loop-video" autoplay muted loop playsinline preload="metadata"
+                 poster="videos/leopard-running-poster.jpg" width="1200" height="932">
+            <source src="videos/leopard-running.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="newsletter-body">
+        <h2>be the first to know</h2>
+        <p class="type">One email when new work is out. That's it.</p>
+        <div class="field">
+          <label for="email" class="sr-only">Email address</label>
+          <input id="email" name="email" type="email" placeholder="Email Address" autocomplete="email" required />
+          <button type="submit" class="pill">join</button>
+        </div>
+        <p class="form-msg type" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <!-- ============ FEATURED PRODUCT ============ -->
+    <section class="featured" id="shop">
+      <div class="featured-inner">
+        <div class="featured-media reveal">
+          <div class="badge">
+            <svg class="badge-ring" viewBox="0 0 140 80" aria-hidden="true">
+              <path d="M120 22C104 6 44 4 18 20 -2 33 8 60 44 68c34 7 80 2 90-18 6-12-4-24-24-30" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            <span><span class="stock-count" data-stock="33">!</span> Rock</span>
+          </div>
+          <div class="tilt" data-tilt>
+            <video class="loop-video" autoplay muted loop playsinline preload="metadata"
+                   poster="videos/hand-clipping-poster.jpg" width="1000" height="888"
+                   aria-label="Hand-drawn animation of hands clapping on a red background">
+              <source src="videos/hand-clipping.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="featured-text">
+          <h2 class="split">a little applause for the little things</h2>
+          <p class="price">Small wins</p>
+          <p class="type">Not everything I create needs a big story. Sometimes, it’s just about a tiny moment, a feeling, or an idea that made me smile — and felt worth bringing to life.</p>
+          <button class="pill add-to-cart" data-product="scarf">add to cart</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>original paintings ✺ giclée prints ✺ silk scarves ✺ small commissions ✺ </span>
+        <span>original paintings ✺ giclée prints ✺ silk scarves ✺ small commissions ✺ </span>
+      </div>
+    </div>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="wrap gallery-section">
+      <div class="section-head">
+        <h2 class="split">recent work</h2>
+        <p class="type">click any piece to see it bigger</p>
+      </div>
+      <div class="gallery">
+        <figure class="piece reveal" data-speed="0.04"><img src="images/work-1.jpg" alt="Dusk, gouache on paper" loading="lazy" width="900" height="1125"><figcaption class="type">Dusk <span>gouache, 2026</span></figcaption></figure>
+        <figure class="piece reveal" data-speed="-0.03"><img src="images/work-2.jpg" alt="Moss, ink and watercolour" loading="lazy" width="900" height="1125"><figcaption class="type">Moss <span>ink &amp; watercolour</span></figcaption></figure>
+        <figure class="piece reveal" data-speed="0.06"><img src="images/work-3.jpg" alt="Tide, gouache" loading="lazy" width="900" height="1125"><figcaption class="type">Tide <span>gouache</span></figcaption></figure>
+        <figure class="piece reveal" data-speed="-0.05"><img src="images/work-4.jpg" alt="Ember, acrylic on board" loading="lazy" width="900" height="1125"><figcaption class="type">Ember <span>acrylic on board</span></figcaption></figure>
+        <figure class="piece reveal" data-speed="0.03"><img src="images/work-5.jpg" alt="Bloom, gouache" loading="lazy" width="900" height="1125"><figcaption class="type">Bloom <span>gouache</span></figcaption></figure>
+        <figure class="piece reveal" data-speed="-0.04"><img src="images/work-9.jpg" alt="Hush, silk study" loading="lazy" width="900" height="1125"><figcaption class="type">Hush <span>silk study</span></figcaption></figure>
+      </div>
+    </section>
+
+    <!-- ============ SHOP STRIP (drag / scroll sideways) ============ -->
+    <section class="prints">
+      <div class="wrap section-head">
+        <h2 class="split">prints, launching soon</h2>
+        <p class="type">drag sideways →</p>
+      </div>
+      <div class="strip" tabindex="0" aria-label="Upcoming prints">
+        <article class="card">
+          <img src="images/work-7.jpg" alt="Olive Hour print" loading="lazy" width="900" height="1125">
+          <h3>olive hour</h3><p class="type">A3 giclée · €40</p>
+          <button class="pill small add-to-cart" data-product="olive-hour">add to cart</button>
+        </article>
+        <article class="card">
+          <img src="images/work-8.jpg" alt="Periwinkle print" loading="lazy" width="900" height="1125">
+          <h3>periwinkle</h3><p class="type">A3 giclée · €40</p>
+          <button class="pill small add-to-cart" data-product="periwinkle">add to cart</button>
+        </article>
+        <article class="card">
+          <img src="images/work-1.jpg" alt="Dusk print" loading="lazy" width="900" height="1125">
+          <h3>dusk</h3><p class="type">A4 giclée · €28</p>
+          <button class="pill small add-to-cart" data-product="dusk">add to cart</button>
+        </article>
+        <article class="card">
+          <img src="images/work-5.jpg" alt="Bloom print" loading="lazy" width="900" height="1125">
+          <h3>bloom</h3><p class="type">A4 giclée · €28</p>
+          <button class="pill small add-to-cart" data-product="bloom">add to cart</button>
+        </article>
+        <article class="card">
+          <img src="images/work-3.jpg" alt="Tide print" loading="lazy" width="900" height="1125">
+          <h3>tide</h3><p class="type">A3 giclée · €40</p>
+          <button class="pill small add-to-cart" data-product="tide">add to cart</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ IN MOTION (vertical video on the right) ============ -->
+    <section class="motion wrap">
+      <div class="motion-text">
+        <p class="type eyebrow">in motion</p>
+        <h2 class="split">muse, a short walk cycle</h2>
+        <p class="type">Frame-by-frame animation, drawn by hand. Sometimes, I make animated videos too, drawing them layer by layer and bringing each frame to life. This one was inspired by one of my favorite artists, The Weeknd, after seeing him live in Milan this summer.</p>
+        <p class="type small-note">5 sec loop · digital, frame by frame</p>
+        <div class="snapshots">
+          <figure class="snap snap-1 reveal">
+            <img src="images/weekend-1.jpg" alt="Me at The Weeknd concert in Milan" loading="lazy" width="900" height="1200">
+          </figure>
+          <figure class="snap snap-2 reveal">
+            <img src="images/weekend-2.jpg" alt="The giant gold statue on stage in Milan" loading="lazy" width="896" height="1400">
+          </figure>
+          <p class="snap-caption">milan, this summer ✺ the night that inspired it</p>
+        </div>
+      </div>
+      <div class="motion-media reveal">
+        <video class="loop-video" autoplay muted loop playsinline preload="metadata"
+               poster="videos/weeknd-muse-poster.jpg" width="720" height="1018"
+               aria-label="Animated gold figure walking on a red background">
+          <source src="videos/weeknd-muse.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about wrap" id="about">
+      <div class="about-photo reveal">
+        <img src="images/photo-me.JPG" alt="In the studio" loading="lazy" width="900" height="1125">
+      </div>
+      <div class="about-text">
+        <h2 class="split">a little about me</h2>
+        <p class="type">Hi, I’m Yasmine, a computer science researcher and digital illustrator who loves turning thoughts, feelings and everyday moments into art.</p>
+        <p class="type">Based in Belgium, I’m currently creating illustrations, prints and little pieces of life that hopefully feel familiar to someone else.</p>
+        <a class="link type" href="#contact">say hello →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="contact">
+    <div class="footer-inner">
+      <p class="footer-big">yartsmin</p>
+      <div class="footer-cols type">
+        <div>
+          <h4>contact</h4>
+          <a href="mailto:ya.akaichi@gmail.com">ya.akaichi@gmail.com</a>
+          <a class="ig-row" href="https://www.instagram.com/yaakaichi/" target="_blank" rel="noopener"><svg class="ig-icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg><span>@yaakaichi</span></a>
+        </div>
+        <div id="shipping">
+          <h4>shipping &amp; returns</h4>
+          <p>Prints ship in 3–5 days, flat &amp; well-protected. Returns within 14 days if something isn't right.</p>
+        </div>
+        <a class="qr" href="https://www.instagram.com/yaakaichi/" target="_blank" rel="noopener">
+          <img src="images/instagram-qr.svg" alt="QR code to my Instagram, @yaakaichi" width="45" height="45" />
+          <span>scan me, say hi on instagram</span>
+        </a>
+      </div>
+      <p class="type small">© <span id="year"></span> yartsmin. All artwork is original, please don't reuse it without asking.</p>
+    </div>
+  </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <dialog class="lightbox" aria-label="Artwork viewer">
+    <button class="lb-close" aria-label="Close">×</button>
+    <button class="lb-nav lb-prev" aria-label="Previous">‹</button>
+    <figure><img alt=""><figcaption class="type"></figcaption></figure>
+    <button class="lb-nav lb-next" aria-label="Next">›</button>
+  </dialog>
+
+  <div class="toast type" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
