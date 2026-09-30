@@ -168,40 +168,22 @@ $$('.add-to-cart').forEach((btn) => {
     btn.textContent = 'added ✓'; btn.classList.add('added');
     setTimeout(() => { btn.textContent = label; btn.classList.remove('added'); }, 1400);
 
-    // featured product: count the stock down
-    if (btn.dataset.product === 'scarf') {
-      const stock = $('.stock-count');
-      const n = Math.max(0, parseInt(stock.textContent, 10) - 1);
-      stock.textContent = n;
-    }
     showToast('added to your cart');
   });
 });
 cartBtn.addEventListener('click', () => showToast(cart.length ? `${cart.length} item${cart.length === 1 ? '' : 's'} in your cart · checkout coming soon` : 'your cart is empty'));
 
-/* ---------- "33 left" counts up when it scrolls into view ---------- */
-const stockEl = $('.stock-count');
-if (stockEl && !reducedMotion && 'IntersectionObserver' in window) {
-  const target = parseInt(stockEl.dataset.stock, 10);
-  const io = new IntersectionObserver(([e]) => {
-    if (!e.isIntersecting) return;
-    io.disconnect();
-    const start = performance.now();
-    const step = (t) => {
-      const p = Math.min(1, (t - start) / 1200);
-      stockEl.textContent = Math.round(50 - (50 - target) * (1 - Math.pow(1 - p, 3)));
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  });
-  io.observe(stockEl);
-}
-
 /* ---------- newsletter form ---------- */
+// 1. Create a free account on https://buttondown.com
+// 2. Put your Buttondown username between the quotes below. That's it.
+const BUTTONDOWN_USERNAME = 'yartsmin';
+
 const form = $('#newsletter');
 const email = $('#email');
 const msg = $('.form-msg');
-form.addEventListener('submit', (e) => {
+const joinBtn = $('button[type="submit"]', form);
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   email.classList.remove('invalid');
   if (!email.checkValidity() || !email.value.trim()) {
@@ -209,10 +191,32 @@ form.addEventListener('submit', (e) => {
     msg.textContent = 'hmm, that email doesn\'t look right';
     return;
   }
-  // TODO: send to your newsletter provider (Buttondown, Mailchimp, Brevo...)
-  // e.g. fetch('https://your-provider/subscribe', { method: 'POST', body: new FormData(form) })
-  msg.textContent = 'you\'re in! talk soon ✿';
-  form.reset();
+  if (!BUTTONDOWN_USERNAME) {
+    msg.textContent = 'the newsletter opens very soon ✿';
+    console.warn('Newsletter: set BUTTONDOWN_USERNAME in js/main.js');
+    return;
+  }
+
+  joinBtn.disabled = true;
+  joinBtn.textContent = '...';
+  msg.textContent = '';
+  try {
+    const data = new FormData();
+    data.append('email', email.value.trim());
+    data.append('tag', 'website');
+    // Buttondown's embed endpoint. 'no-cors' because it's a cross-site form post:
+    // the browser can't read the reply, but the subscription goes through.
+    await fetch(`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`, {
+      method: 'POST', body: data, mode: 'no-cors',
+    });
+    msg.textContent = 'almost there! check your inbox to confirm ✿';
+    form.reset();
+  } catch {
+    msg.textContent = 'oops, something went wrong. try again in a moment?';
+  } finally {
+    joinBtn.disabled = false;
+    joinBtn.textContent = 'join';
+  }
 });
 
 /* ---------- lightbox for the gallery ---------- */
