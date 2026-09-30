@@ -147,31 +147,34 @@ function showToast(msg) {
 }
 
 /* ---------- cart (front-end only for now; hook up checkout later) ---------- */
+// SHOP — disabled for now: this only runs if the cart button exists in index.html
 const cartBtn = $('.cart');
-const cartCount = $('.cart-count');
-let cart = [];
-try { cart = JSON.parse(localStorage.getItem('yartsmin-cart')) || []; } catch { cart = []; }
+if (cartBtn) {
+  const cartCount = $('.cart-count');
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem('yartsmin-cart')) || []; } catch { cart = []; }
 
-function renderCart() {
-  cartCount.textContent = cart.length;
-  cartBtn.setAttribute('aria-label', `Cart, ${cart.length} item${cart.length === 1 ? '' : 's'}`);
-}
-renderCart();
+  function renderCart() {
+    cartCount.textContent = cart.length;
+    cartBtn.setAttribute('aria-label', `Cart, ${cart.length} item${cart.length === 1 ? '' : 's'}`);
+  }
+  renderCart();
 
-$$('.add-to-cart').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    cart.push(btn.dataset.product);
-    try { localStorage.setItem('yartsmin-cart', JSON.stringify(cart)); } catch { /* storage blocked */ }
-    renderCart();
-    cartBtn.classList.remove('bump'); void cartBtn.offsetWidth; cartBtn.classList.add('bump');
-    const label = btn.textContent;
-    btn.textContent = 'added ✓'; btn.classList.add('added');
-    setTimeout(() => { btn.textContent = label; btn.classList.remove('added'); }, 1400);
+  $$('.add-to-cart').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      cart.push(btn.dataset.product);
+      try { localStorage.setItem('yartsmin-cart', JSON.stringify(cart)); } catch { /* storage blocked */ }
+      renderCart();
+      cartBtn.classList.remove('bump'); void cartBtn.offsetWidth; cartBtn.classList.add('bump');
+      const label = btn.textContent;
+      btn.textContent = 'added ✓'; btn.classList.add('added');
+      setTimeout(() => { btn.textContent = label; btn.classList.remove('added'); }, 1400);
 
-    showToast('added to your cart');
+      showToast('added to your cart');
+    });
   });
-});
-cartBtn.addEventListener('click', () => showToast(cart.length ? `${cart.length} item${cart.length === 1 ? '' : 's'} in your cart · checkout coming soon` : 'your cart is empty'));
+  cartBtn.addEventListener('click', () => showToast(cart.length ? `${cart.length} item${cart.length === 1 ? '' : 's'} in your cart · checkout coming soon` : 'your cart is empty'));
+}
 
 /* ---------- newsletter form ---------- */
 // 1. Create a free account on https://buttondown.com
