@@ -177,49 +177,25 @@ if (cartBtn) {
 }
 
 /* ---------- newsletter form ---------- */
-// 1. Create a free account on https://buttondown.com
-// 2. Put your Buttondown username between the quotes below. That's it.
-const BUTTONDOWN_USERNAME = 'yartsmin';
-
+// The form itself (in index.html) posts to Buttondown, as Buttondown requires:
+//   action="https://buttondown.com/api/emails/embed-subscribe/yartsmin"
+// It opens Buttondown's confirmation page in a new tab, where a captcha can
+// appear if needed. Here we only check the email before letting it go.
 const form = $('#newsletter');
 const email = $('#email');
 const msg = $('.form-msg');
-const joinBtn = $('button[type="submit"]', form);
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+form.addEventListener('submit', (e) => {
   email.classList.remove('invalid');
   if (!email.checkValidity() || !email.value.trim()) {
+    e.preventDefault();
     void email.offsetWidth; email.classList.add('invalid');
     msg.textContent = 'hmm, that email doesn\'t look right';
     return;
   }
-  if (!BUTTONDOWN_USERNAME) {
-    msg.textContent = 'the newsletter opens very soon ✿';
-    console.warn('Newsletter: set BUTTONDOWN_USERNAME in js/main.js');
-    return;
-  }
-
-  joinBtn.disabled = true;
-  joinBtn.textContent = '...';
-  msg.textContent = '';
-  try {
-    const data = new FormData();
-    data.append('email', email.value.trim());
-    data.append('tag', 'website');
-    // Buttondown's embed endpoint. 'no-cors' because it's a cross-site form post:
-    // the browser can't read the reply, but the subscription goes through.
-    await fetch(`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`, {
-      method: 'POST', body: data, mode: 'no-cors',
-    });
-    msg.textContent = 'almost there! check your inbox to confirm ✿';
-    form.reset();
-  } catch {
-    msg.textContent = 'oops, something went wrong. try again in a moment?';
-  } finally {
-    joinBtn.disabled = false;
-    joinBtn.textContent = 'join';
-  }
+  // valid: let the browser send the form normally (new tab), then tidy up here
+  msg.textContent = 'almost there! finish in the new tab, then check your inbox ✿';
+  setTimeout(() => form.reset(), 300);
 });
 
 /* ---------- lightbox for the gallery ---------- */

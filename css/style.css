@@ -86,6 +86,12 @@ h2 { font-size: clamp(2.4rem, 5vw, 3.2rem); line-height: 1; }
 /* ================= HERO ================= */
 .hero {
   position: relative;
+  /* graph-paper background for the first section */
+  /* the white veil (first layer) softens the grid so the title stays readable:
+     raise .5 to make the paper lighter, lower it to make it stronger */
+  background:
+    linear-gradient(rgb(255 255 255 / .5), rgb(255 255 255 / .5)),
+    url('../images/carreaux-paper.png') center / cover no-repeat;
   min-height: 78vh;
   display: grid; place-items: center;
   padding: 60px 16px 40px;
@@ -259,9 +265,10 @@ h2 { font-size: clamp(2.4rem, 5vw, 3.2rem); line-height: 1; }
 .footer-cols a { display: block; margin-bottom: 6px; }
 .footer-cols p { margin: 0; max-width: 44ch; }
 
-.ig-row { display: inline-flex !important; align-items: center; gap: 8px; text-decoration: none; }
+.ig-row { display: flex !important; width: fit-content; align-items: center; gap: 8px; text-decoration: none; }
 .ig-row:hover span { text-decoration: underline; text-underline-offset: 3px; }
-.footer-cols .qr { grid-column: -2; }
+.footer-cols .qr-pair { grid-column: -2; display: flex; gap: 28px; }
+.qr-etsy img { rotate: 3deg; }
 .qr { display: grid; justify-items: center; gap: 10px; width: 160px; text-decoration: none; text-align: center; font-size: .8rem; }
 .qr img { width: 160px; height: 160px; border-radius: 6px; transition: transform .4s var(--ease); rotate: -3deg; }
 .qr:hover img { transform: scale(1.05); rotate: 0deg; }
@@ -344,6 +351,7 @@ h2 { font-size: clamp(2.4rem, 5vw, 3.2rem); line-height: 1; }
 
 @media (max-width: 900px) {
   .newsletter { grid-template-columns: 1fr; padding-top: 30px; }
+  .newsletter-band { padding: 40px 0; background-size: 90px 90px; }
   .newsletter-leopard { width: min(100%, 320px); margin: 0 auto -10px; }
   .motion { grid-template-columns: 1fr; gap: 50px; padding-block: 80px 20px; }
   .motion-media { width: min(100%, 340px); }
@@ -371,6 +379,65 @@ h2 { font-size: clamp(2.4rem, 5vw, 3.2rem); line-height: 1; }
 @media (max-width: 520px) {
   .snap { width: 120px; }
   .snap-caption { position: static; width: auto; align-self: center; margin-left: 18px; font-size: 1.15rem; }
+}
+
+
+/* Tunisian tile band behind the newsletter box (the lavender box itself is unchanged) */
+.newsletter-band {
+  background: #22409a url('../images/tunisian-tile.svg') center / 120px 120px repeat;
+  padding: 80px 0;
+}
+.newsletter-band .newsletter {
+  margin-block: 0;
+  box-shadow: 0 24px 60px rgb(10 20 60 / .35);
+}
+
+
+/* striped wallpaper behind "muse, a short walk cycle".
+   The cream veil keeps the text readable: raise .55 for softer stripes, lower it for stronger */
+.motion-band {
+  background:
+    linear-gradient(rgb(253 248 238 / .55), rgb(253 248 238 / .55)),
+    url('../images/raillures.jpg') left top / 1000px auto repeat;
+  background-color: #a9b8c4;
+  margin-top: 60px;
+}
+.motion-band .motion { padding-block: 100px; }
+
+
+/* swinging Etsy tag in "prints, launching soon" */
+.prints-head { align-items: flex-start; }
+.etsy-tag {
+  position: relative; display: grid; justify-items: center;
+  margin: -40px 30px 0 0;
+  text-decoration: none; color: var(--maroon);
+  transform-origin: 50% 0;
+  animation: swing 3.2s ease-in-out infinite;
+}
+.tag-string { width: 2px; height: 46px; background: var(--maroon); opacity: .55; }
+.tag-card {
+  position: relative; display: grid; justify-items: center; gap: 8px;
+  width: 150px; padding: 26px 14px 14px;
+  background: var(--cream);
+  border-radius: 10px 10px 6px 6px;
+  box-shadow: 0 16px 30px rgb(58 20 32 / .2);
+  clip-path: polygon(22% 0, 78% 0, 100% 12%, 100% 100%, 0 100%, 0 12%);
+}
+.tag-hole { position: absolute; top: 9px; width: 10px; height: 10px; border-radius: 50%; background: var(--lavender-soft); box-shadow: inset 0 1px 2px rgb(0 0 0 / .25); }
+.tag-card img { width: 118px; height: 118px; }
+.tag-text { font: italic 400 1.25rem/1 var(--serif); text-align: center; }
+.etsy-tag:hover { animation-play-state: paused; }
+.etsy-tag:hover .tag-card { box-shadow: 0 22px 40px rgb(58 20 32 / .28); }
+@keyframes swing {
+  0%, 100% { transform: rotate(-9deg); }
+  50%      { transform: rotate(7deg); }
+}
+@media (max-width: 900px) {
+  .prints-head { flex-wrap: nowrap; }
+  .etsy-tag { margin: -30px 0 0 0; }
+  .tag-card { width: 120px; }
+  .tag-card img { width: 92px; height: 92px; }
+  .tag-string { height: 30px; }
 }
 
 /* ================= RESPONSIVE ================= */
@@ -405,6 +472,9 @@ h2 { font-size: clamp(2.4rem, 5vw, 3.2rem); line-height: 1; }
   .piece:nth-child(even) { margin-top: 50px; }
   .footer-cols { grid-template-columns: 1fr; }
   .qr { justify-self: start; }
+  .qr-pair { flex-wrap: wrap; gap: 20px; }
+  .qr, .qr img { width: 140px; }
+  .qr img { height: 140px; }
   .top-actions { gap: 14px; }
 }
 @media (max-width: 520px) {
